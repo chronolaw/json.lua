@@ -396,5 +396,17 @@ function json.decode(str)
   return res
 end
 
+-- read from a file
+function json.read(name)
+    local f = io.open(name, "r")
+    if not f then
+        return nil
+    end
+
+    local str = f:read("*a")
+    f:close()
+
+    return json.decode(str)
+end
 
 return json
